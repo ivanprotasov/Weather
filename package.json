@@ -1,0 +1,19 @@
+{
+  "name": "weather",
+  "version": "0.1.0",
+  "description": "The simple weather API app",
+  "main": "index.js",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.17",
+    "es6-shim": "^0.35.1",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.6",
+    "zone.js": "^0.6.26"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ivan Pratasau",
+  "license": "ISC"
+}
