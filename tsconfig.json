@@ -1,0 +1,26 @@
+{
+  "declaration": false,
+  "emitDecoratorMetadata": true,
+  "experimentalDecorators": true,
+  "mapRoot": "./",
+  "module": "es6",
+  "moduleResolution": "node",
+  "noEmitOnError": true,
+  "noImplicitAny": false,
+  "lib": ["es2015", "dom"],
+  "outDir": "../dist/out-tsc",
+  "sourceMap": true,
+  "target": "es5",
+  "removeComments": false,
+  "suppressImplicitAnyIndexErrors": true,
+  "typeRoots": [
+    "../node_modules/@types"
+  ],
+  "types": [
+    "core-js"
+  ],
+  "exclude": [
+    "node_modules",
+    "bower_components"
+  ]
+}
