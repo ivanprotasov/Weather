@@ -1,11 +1,11 @@
 class HttpService {
-    static httpGet(url: string) {
-        return new Promise<string>(function(resolve, reject) {
+    static httpGet(url:string) {
+        return new Promise<string>(function (resolve, reject) {
 
             var xhr = new XMLHttpRequest();
             xhr.open('GET', url, true);
 
-            xhr.onload = function() {
+            xhr.onload = function () {
                 if (this.status == 200) {
                     resolve(this.response);
                 } else {
@@ -14,7 +14,7 @@ class HttpService {
                 }
             };
 
-            xhr.onerror = function() {
+            xhr.onerror = function () {
                 reject(new Error("Network Error"));
             };
 
