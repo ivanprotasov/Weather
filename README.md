@@ -1,4 +1,4 @@
-## Weater app
+## Weather app
 
 ```sh
 # install: 
