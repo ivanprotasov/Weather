@@ -1,0 +1,22 @@
+.bs-docs-header, .bs-docs-masthead {
+  position: relative;
+  padding: 30px 0;
+  color: #cdbfe3;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,.1);
+  background-image: linear-gradient(to bottom,#563d7c 0,#6f5499 100%);
+  background-repeat: repeat-x;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 24px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 0;
+  color: #fff;
+}
+
+.align-center {
+  text-align: center;
+}
+

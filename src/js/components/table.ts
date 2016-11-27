@@ -27,27 +27,23 @@ class Table {
     }
 
     private renderTableHeadings(): string {
-        let tableHead: string = ``;
         let list: Array<string> = this.tHead;
-        for (let i: number = 0; i < list.length; i++) {
-            tableHead +=
-                `<th>
-                    ${list[i]}
-                </th>`
-        }
-        return tableHead;
+        return list.reduce((previousValue, currentValue): string => {
+                    return previousValue +=
+                        `<th>
+                            ${currentValue}
+                        </th>`
+                }, ``);
     }
 
     private renderTableList(tBody): string {
-        let tableList: string = ``;
-        for (let i: number = 0; i < tBody.length; i++) {
-            let row = this.renderRow(tBody[i]);
-            tableList +=
+        return tBody.reduce((previousValue, currentValue): string => {
+            let row = this.renderRow(currentValue);
+            return previousValue +=
                 `<tr>
                     ${row}
                 </tr>`
-        }
-        return tableList;
+        }, ``);
     }
 
     private renderRow(data: Array<string>): string {

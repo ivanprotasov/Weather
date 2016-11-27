@@ -9,7 +9,7 @@ class Pagination {
     private paginationEl: HTMLUListElement;
     private splettedData: Array<Array<Array<string>>>;
 
-    constructor(data: Array<Array<string>>, n: number, eventService: EventService) {
+    constructor(data, n, eventService) {
         this.data = data;
         this.eventService = eventService;
         this.n = n;
@@ -31,8 +31,8 @@ class Pagination {
             } else {
                 numbersView = numbersView + `<li><a class='pagination-number' href="#">${i + 1}</a></li>`
             }
-
         }
+
         let paginationView = `
              <li>
                 <a class='pagination-prew' href="#">«</a>
@@ -67,13 +67,13 @@ class Pagination {
         this.eventService.publish('dataIsChanged', this.getData());
     }
 
-    getData(): Array<Array<string>> {
+    getData() {
         return this.splettedData[this.selectedPart];
     }
 
-    private splitData(): Array<Array<Array<string>>> {
+    private splitData() {
         let n = this.n;
-        let splitedArr: Array<Array<Array<string>>> = [];
+        let splitedArr = [];
 
         for (let i: number = 0; i < this.parts; i++) {
             splitedArr.push([])
