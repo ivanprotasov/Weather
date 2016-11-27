@@ -1,8 +1,8 @@
 class Table {
-    private tHead:Array<string>;
-    private tBody:Array<Array<string>>;
-    private tableEl:string;
-    private thead:string;
+    private tHead: Array<string>;
+    private tBody: Array<Array<string>>;
+    private tableEl: string;
+    private thead: string;
 
     constructor(tHead, tBody) {
         this.tHead = tHead;
@@ -12,7 +12,7 @@ class Table {
     }
 
     render(tBody) {
-        let tbody:string = this.renderTableList(tBody);
+        let tbody: string = this.renderTableList(tBody);
         this.tableEl =
             `<table>
             <thead>
@@ -26,10 +26,10 @@ class Table {
          </table>`
     }
 
-    private renderTableHeadings():string {
-        let tableHead:string = ``;
-        let list:Array<string> = this.tHead;
-        for (let i:number = 0; i < list.length; i++) {
+    private renderTableHeadings(): string {
+        let tableHead: string = ``;
+        let list: Array<string> = this.tHead;
+        for (let i: number = 0; i < list.length; i++) {
             tableHead +=
                 `<th>
                     ${list[i]}
@@ -38,9 +38,9 @@ class Table {
         return tableHead;
     }
 
-    private renderTableList(tBody):string {
-        let tableList:string = ``;
-        for (let i:number = 0; i < tBody.length; i++) {
+    private renderTableList(tBody): string {
+        let tableList: string = ``;
+        for (let i: number = 0; i < tBody.length; i++) {
             let row = this.renderRow(tBody[i]);
             tableList +=
                 `<tr>
@@ -50,8 +50,8 @@ class Table {
         return tableList;
     }
 
-    private renderRow(data:Array<string>):string {
-        let row:string = ``;
+    private renderRow(data: Array<string>): string {
+        let row: string = ``;
         for (let key in data) {
             if (data.hasOwnProperty(key)) {
                 row += `<td>${data[key]}</td>`
@@ -60,7 +60,7 @@ class Table {
         return row;
     }
 
-    getEl():string {
+    getEl(): string {
         return this.tableEl
     }
 }

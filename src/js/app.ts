@@ -4,7 +4,7 @@ import EventService from './services/eventService';
 import AllWeatherData from './components/weatherData/allWeatherDataInterface';
 import Table from './components/table/table';
 import Pagination from './components/pagination';
-import "./styles/base.scss";
+import "./../styles/base.scss";
 
 
 if (navigator.geolocation) {

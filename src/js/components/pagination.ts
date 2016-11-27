@@ -1,15 +1,15 @@
 import EventService from '../services/eventService'
 
 class Pagination {
-    private data:Array<Array<string>>;
-    private eventService:EventService;
-    private n:number;
-    private parts:number;
-    private selectedPart:number;
-    private paginationEl:HTMLUListElement;
-    private splettedData:Array<Array<Array<string>>>;
+    private data: Array<Array<string>>;
+    private eventService: EventService;
+    private n: number;
+    private parts: number;
+    private selectedPart: number;
+    private paginationEl: HTMLUListElement;
+    private splettedData: Array<Array<Array<string>>>;
 
-    constructor(data:Array<Array<string>>, n:number, eventService:EventService) {
+    constructor(data: Array<Array<string>>, n: number, eventService: EventService) {
         this.data = data;
         this.eventService = eventService;
         this.n = n;
@@ -24,8 +24,8 @@ class Pagination {
         let paginationEl = this.paginationEl;
         paginationEl.className = 'pagination';
         paginationEl.addEventListener('click', this.changePage.bind(this));
-        let numbersView:string = ``;
-        for (let i:number = 0; i < this.parts; i++) {
+        let numbersView: string = ``;
+        for (let i: number = 0; i < this.parts; i++) {
             if (!i) {
                 numbersView = numbersView + `<li class='active'><a class='pagination-number' href="#">${i + 1}</a></li>`
             } else {
@@ -67,19 +67,19 @@ class Pagination {
         this.eventService.publish('dataIsChanged', this.getData());
     }
 
-    getData():Array<Array<string>> {
+    getData(): Array<Array<string>> {
         return this.splettedData[this.selectedPart];
     }
 
-    private splitData():Array<Array<Array<string>>> {
+    private splitData(): Array<Array<Array<string>>> {
         let n = this.n;
-        let splitedArr:Array<Array<Array<string>>> = [];
+        let splitedArr: Array<Array<Array<string>>> = [];
 
-        for (let i:number = 0; i < this.parts; i++) {
+        for (let i: number = 0; i < this.parts; i++) {
             splitedArr.push([])
         }
         this.data.forEach(function (value, index) {
-            let part:number = Math.floor(index / n);
+            let part: number = Math.floor(index / n);
             splitedArr[part].push(value);
         });
         return splitedArr;
