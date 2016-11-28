@@ -4,6 +4,7 @@
   "description": "The simple weather API app",
   "main": "index.js",
   "devDependencies": {
+    "@types/es6-shim": "^0.31.32",
     "awesome-typescript-loader": "^1.0.0",
     "css-loader": "^0.26.0",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -24,5 +25,9 @@
     "build": "webpack --optimize-minimize"
   },
   "author": "Ivan Pratasau",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@types/google-maps": "^3.1.28",
+    "google-maps": "^3.2.1"
+  }
 }

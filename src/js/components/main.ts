@@ -4,9 +4,11 @@ import EventService from './../services/eventService';
 import AllWeatherData from './weatherDataInterfaces/allWeatherDataInterface';
 import Table from './table';
 import Pagination from './pagination';
+import GoogleMapsLoader  = require('google-maps') ;
 
 class Main {
     constructor () {
+
         document.getElementById('root').innerHTML = `
             <div class="bs-docs-header">
                 <div class="container">
@@ -14,42 +16,51 @@ class Main {
                 </div>
             </div>
             <div id='weather-table'>Loading</div>
-            <div id='weather-pagination' class='align-center'></div>`;
+            <div id='weather-pagination' class='align-center'></div>
+            <div id='weather-map'></div>`;
+
+         // GoogleMapsLoader.KEY = 'qwertyuiopasdfghjklzxcvbnm';
+         // GoogleMapsLoader.load(function(google) {
+         //       google.maps.Map(document.getElementById('weather-map'), {
+         //       center: {lat: -34.397, lng: 150.644},
+         //       scrollwheel: false,
+         //       zoom: 8
+         //   });
+         // });
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {
-                this.renderPage(WeatherService.getWeather(position));
+                WeatherService.getWeather(position).then(this.renderPage.bind(this), this.renderError.bind(this));
             });
         } else {
             console.log("Geolocation is not supported by this browser.");
-            this.renderPage(WeatherService.getWeather(''));
+            WeatherService.getWeather('').then(this.renderPage.bind(this));
         }
     }
 
-    renderPage(promise) {
-        promise.then(
-            response => {
-                let weatherTable;
-                let tableData = JSON.parse(response) as AllWeatherData;
-                let eventService = new EventService();
+    renderPage(data) {
+        let weatherTable;
+        let tableData = JSON.parse(data) as AllWeatherData;
+        let eventService = new EventService();
 
-                let weatherHead = WeatherService.prepareWeatherHeaderData(tableData);
-                let weatherBody = WeatherService.prepareWeatherBodyData(tableData);
-                let pagination = new Pagination(weatherBody, 10, eventService);
-                let splittedData = pagination.getData();
-                weatherTable = new Table(weatherHead, splittedData);
+        let weatherHead = WeatherService.prepareWeatherHeaderData(tableData);
+        let weatherBody = WeatherService.prepareWeatherBodyData(tableData);
+        let pagination = new Pagination(weatherBody, 10, eventService);
+        let splittedData = pagination.getData();
+        weatherTable = new Table(weatherHead, splittedData);
 
 
-                document.getElementById('weather-table').innerHTML = weatherTable.getEl();
-                document.getElementById('weather-pagination').appendChild(pagination.generatePaginationEl());
+        document.getElementById('weather-table').innerHTML = weatherTable.getEl();
+        document.getElementById('weather-pagination').appendChild(pagination.generatePaginationEl());
 
-                eventService.subscribe('dataIsChanged', function (splittedData) {
-                    weatherTable.render(splittedData);
-                    document.getElementById('weather-table').innerHTML = weatherTable.getEl();
-                });
-            },
-                error => document.getElementById('root').innerHTML = `Rejected: ${error}`
-        )
+        eventService.subscribe('dataIsChanged', function (splittedData) {
+            weatherTable.render(splittedData);
+            document.getElementById('weather-table').innerHTML = weatherTable.getEl();
+        });
+    }
+
+    renderError(error) {
+        document.getElementById('weather-table').innerHTML = `Weather data is not available: ${error}`
     }
 }
 

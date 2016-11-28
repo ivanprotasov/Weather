@@ -1,3 +1,4 @@
+import {Promise} from 'es6-promise';
 class HttpService {
     static httpGet(url: string) {
         return new Promise<string>(function (resolve, reject) {

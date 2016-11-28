@@ -11,9 +11,6 @@
   "target": "es6",
   "removeComments": false,
   "suppressImplicitAnyIndexErrors": true,
-  "typeRoots": [
-    "../node_modules/@types"
-  ],
   "types": [
     "core-js"
   ],
