@@ -29,6 +29,16 @@ table {
     }
   }
 
+  th:first-child,
+  td:first-child{
+    width: 10px;
+  }
+
+  th:nth-child(2),
+  td:nth-child(2){
+    min-width: 200px;
+  }
+
   & > tbody {
     & > tr:nth-of-type(odd) {
       background-color: #f9f9f9;

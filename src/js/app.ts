@@ -3,7 +3,6 @@ import "./../styles/base.scss";
 
 let app = new Main;
 
-document.getElementById('root').innerHTML = `Loading`;
 
 
 

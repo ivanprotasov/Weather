@@ -30,9 +30,7 @@ class Table {
         let list: Array<string> = this.tHead;
         return list.reduce((previousValue, currentValue): string => {
                     return previousValue +=
-                        `<th>
-                            ${currentValue}
-                        </th>`
+                        `<th>${currentValue}</th>`
                 }, ``);
     }
 
@@ -40,9 +38,7 @@ class Table {
         return tBody.reduce((previousValue, currentValue): string => {
             let row = this.renderRow(currentValue);
             return previousValue +=
-                `<tr>
-                    ${row}
-                </tr>`
+                `<tr>${row}</tr>`
         }, ``);
     }
 
