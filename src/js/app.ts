@@ -1,8 +1,14 @@
-import Main from './components/main'
-import "./../styles/base.scss";
+//import Main from './components/main'
+//import "./../styles/base.scss";
+//
+//let app = new Main;
+import { Component } from '@angular/core';
 
-let app = new Main;
-
+@Component({
+    selector: 'my-app',
+    template: `<h1>Hello {{name}}</h1>`
+})
+export class AppComponent { name = 'Angular'; }
 
 
 

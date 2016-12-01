@@ -19,14 +19,6 @@ class Main {
             <div id='weather-pagination' class='align-center'></div>
             <div id='weather-map'></div>`;
 
-         // GoogleMapsLoader.KEY = 'qwertyuiopasdfghjklzxcvbnm';
-         // GoogleMapsLoader.load(function(google) {
-         //       google.maps.Map(document.getElementById('weather-map'), {
-         //       center: {lat: -34.397, lng: 150.644},
-         //       scrollwheel: false,
-         //       zoom: 8
-         //   });
-         // });
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position) => {

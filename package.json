@@ -27,6 +27,8 @@
   "author": "Ivan Pratasau",
   "license": "ISC",
   "dependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/es6-shim": "^0.31.32",
     "@types/google-maps": "^3.1.28",
     "google-maps": "^3.2.1"
   }
